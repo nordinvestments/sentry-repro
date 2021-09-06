@@ -2,6 +2,22 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const throwError = (errorMessage) => {
+    throw new Error(`ERROR: ${errorMessage}`)
+  }
+  const throwAsyncError = async () => {
+    console.log('Throwing async error')
+    throwError('async error!')
+  }
+
+  const onClick = async () => {
+    throwError('error!')
+  }
+
+  const onAsyncClick = () => {
+    throwAsyncError()
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +33,8 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={onClick}>Normal error</button>
+        <button onClick={onAsyncClick}>Async error</button>
       </header>
     </div>
   );
