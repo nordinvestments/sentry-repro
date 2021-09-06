@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/react'
 import { Integrations } from '@sentry/tracing'
+import { ExtraErrorData } from '@sentry/integrations'
 
 const debug = true
 const enableSentry = true
@@ -14,7 +15,7 @@ if (enableSentry)
     environment: environmentName,
     release: commitRef,
     debug,
-    integrations: [new Integrations.BrowserTracing()],
+    integrations: [new Integrations.BrowserTracing(), new ExtraErrorData()],
     tracesSampleRate: 0.2,
     attachStacktrace: true
   })
