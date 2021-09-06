@@ -1,12 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
 
 function App() {
   const throwError = (errorMessage) => {
     throw new Error(`ERROR: ${errorMessage}`)
   }
   const throwAsyncError = async () => {
-    console.log('Throwing async error')
+    const response = await axios.get('/not/existing/path')
+
+    console.log('response', response)
+
     throwError('async error!')
   }
 
